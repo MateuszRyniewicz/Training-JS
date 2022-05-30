@@ -1,39 +1,57 @@
-const pass = document.querySelector('#password');
-const p = document.querySelector('.passinfo');
-const letters = /[a-z]/i;
-const numbers = /[0-9]/;
-const special = /[!@#$%^&*()]/;
-const minValue = 10;
+const convert = document.querySelector('#converter');
+const result = document.querySelector('.result');
+const convBtn = document.querySelector('.conv');
+const restBtn = document.querySelector('.reset');
+const changeBtn = document.querySelector('.change');
+const one = document.querySelector('.one');
+const two = document.querySelector('.two');
 
-const showMsg = () => {
-	if (
-		pass.value.length > minValue &&
-		pass.value.match(letters) &&
-		pass.value.match(numbers) &&
-		pass.value.match(special)
-	) {
-		p.textContent = 'Bardzo Dobre hasło';
-		p.style.color = 'lime';
-	} else if (
-		pass.value.length > minValue &&
-		pass.value.match(letters) &&
-		pass.value.match(numbers)
-	) {
-		p.textContent = 'Dobre hasło';
-		p.style.color = 'blue';
+let fahren;
+let cel;
+
+const swap = () => {
+	if (one.textContent === '°C') {
+		one.textContent = '°F';
+		two.textContent = '°C';
+		result.textContent = '';
 	} else {
-		p.textContent = 'zle hasło';
-		p.style.color = 'red';
+		one.textContent = '°C';
+		two.textContent = '°F';
+		result.textContent = '';
 	}
 };
 
-const checkPassword = () => {
-	if (pass.value != '') {
-		showMsg();
+const FarToCel = () => {
+	fahren = convert.value * 1.8 + 32;
+	result.textContent = `${convert.value}C to ${fahren.toFixed(1)}F`;
+	convert.value = '';
+};
+
+const CelToFar = () => {
+	cel = (convert.value - 32) / 1.8;
+	result.textContent = `${convert.value}F to ${cel.toFixed(1)}C`;
+	convert.value = '';
+};
+
+const converter = () => {
+	if (convert.value !== '') {
+		if (one.textContent == '°C') {
+			FarToCel();
+		} else {
+			CelToFar();
+		}
 	} else {
-		p.textContent = 'brak hasła';
-		p.style.color = '';
+		result.textContent = 'you have to write number';
 	}
 };
 
-pass.addEventListener('keyup', checkPassword);
+const reseting = () => {
+	convert.value = '';
+	result.textContent = '';
+};
+
+changeBtn.addEventListener('click', swap);
+
+convBtn.addEventListener('click', converter);
+
+restBtn.addEventListener('click', reseting);
