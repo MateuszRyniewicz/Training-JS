@@ -1,13 +1,25 @@
-const burger = document.querySelector('.burger');
-const barsIco = document.querySelector('.fa-bars');
-const xIco = document.querySelector('.fa-times');
-const nav = document.querySelector('nav ul');
+const currentDay = document.querySelector('.current-day');
+const funFact = document.querySelector('.fun-fact');
 
-const handleNav = () => {
-	nav.classList.toggle('active');
-	burger.classList.toggle('active');
-	barsIco.classList.toggle('hide');
-	xIco.classList.toggle('hide');
+const facts = [
+	'Krokodyl nie potrafi wystawić języka.',
+	'Każdy człowiek spędził około pół godziny jako pojedyncza komórka.',
+	'Dźwięk przemieszcza się 15 razy szybciej przez stal niż przez powietrze.',
+	'Leniwce potrzebują dwóch tygodni na strawienie jedzenia.',
+	'Goryle śpią nawet czternaście godzin dziennie.',
+	'Język kameleona jest dwukrotnie dłuższy od jego ciała.',
+	'Chińczycy w ciągu roku zużywają około 80 miliardów pałeczek.',
+	'Żeby wejść na Wieżę Eiffla trzeba pokonać aż 1710 stopni.',
+];
+
+const randomFacts = () => {
+	let randomNr = Math.floor(Math.random() * facts.length);
+	console.log(randomNr);
+
+	funFact.textContent = facts[randomNr]
 };
 
-burger.addEventListener('click', handleNav);
+const day = new Date();
+currentDay.textContent = day.toLocaleString('pl', { weekday: 'long' });
+
+randomFacts();
