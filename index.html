@@ -14,51 +14,35 @@
 </head>
 
 <body>
-
-    <div class="todo">
-        <div class="header">
-            <h1>ToDo List</h1>
-            <input type="text" class="todo-input" placeholder="Wpisz treść zadania...">
-            <button class="btn-add">Add</button>
+    <div class="wrapper">
+        <div class="top">
+            <h1>weather app</h1>
+            <div class="main-info">
+                <div>
+                    <h3 class="city-name"></h3>
+                    <input type="text" placeholder="Wpisz nazwę miasta..."><button>Wyślij</button>
+                    <p class="warning"></p>
+                </div>
+                <img src="./img/unknown.png" alt="Obrazek przedstawiający pogodę" class="photo">
+            </div>
         </div>
-        <div class="todolist">
-            <h3>Lista zadań:</h3>
-            <p class="error-info"></p>
-            <ul>
-                <li data-id='test1'>Wypić kawę
-                    <div class="tools">
-                        <button class="complete"><i class="fas fa-check"></i></button>
-                        <button class="edit">EDIT</button>
-                        <button class="delete"><i class="fas fa-times"></i></button>
-                    </div>
-                </li>
-                <li data-id='test2'>Zjeść śniadanie
-                    <div class="tools">
-                        <button class="complete"><i class="fas fa-check"></i></button>
-                        <button class="edit">EDIT</button>
-                        <button class="delete"><i class="fas fa-times"></i></button>
-                    </div>
-                </li>
-                <li data-id='test3'>Umyć okna
-                    <div class="tools">
-                        <button class="complete"><i class="fas fa-check"></i></button>
-                        <button class="edit">EDIT</button>
-                        <button class="delete"><i class="fas fa-times"></i></button>
-                    </div>
-                </li>
-            </ul>
+        <div class="bottom">
+            <div class="headings">
+                <p>Weather:</p>
+                <p>Temperature:</p>
+                <p>Humidity:</p>
+            </div>
+            <div class="weather-info">
+                <p class="weather"></p>
+                <p class="temperature"></p>
+                <p class="humidity"></p>
+            </div>
         </div>
     </div>
 
-    <div class="popup">
-        <h3>Edytuj zadanie:</h3>
-        <div class="popup-body">
-            <p class="popup-info"></p>
-            <input type="text" class="popup-input" placeholder="Wprowadź nową treść zadania...">
-            <button class="popup-btn accept">Zatwierdź</button>
-            <button class="popup-btn cancel">Anuluj</button>
-        </div>
-    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="js/script.js"></script>
 </body>
 
